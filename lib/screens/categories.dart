@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jjmalltest/components/category_card.dart';
-import 'package:jjmalltest/providers/categories_provider.dart';
-import 'package:jjmalltest/providers/navbar_provider.dart';
+import 'package:jjmalltest/controllers/categories_controller.dart';
+import 'package:jjmalltest/controllers/navbar_controller.dart';
 import 'package:provider/provider.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -9,8 +9,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navProvider = Provider.of<NavBarProvider>(context);
-    final categoriesProvider = Provider.of<CategoryProvider>(context);
+    final navProvider = Provider.of<NavBarController>(context);
+    final categoriesProvider = Provider.of<CategoryController>(context);
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(78),

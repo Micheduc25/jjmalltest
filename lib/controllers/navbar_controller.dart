@@ -5,7 +5,7 @@ import 'package:jjmalltest/screens/favorites.dart';
 import 'package:jjmalltest/screens/home.dart';
 import 'package:jjmalltest/screens/profile.dart';
 
-class NavBarProvider with ChangeNotifier {
+class NavBarController with ChangeNotifier {
   List<Widget> _navBarItems = [
     HomeScreen(),
     CategoriesScreen(),

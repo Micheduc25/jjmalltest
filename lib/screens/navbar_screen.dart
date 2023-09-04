@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jjmalltest/providers/cart_provider.dart';
-import 'package:jjmalltest/providers/categories_provider.dart';
-import 'package:jjmalltest/providers/favorites_provider.dart';
-import 'package:jjmalltest/providers/home_provider.dart';
+import 'package:jjmalltest/controllers/cart_controller.dart';
+import 'package:jjmalltest/controllers/categories_controller.dart';
+import 'package:jjmalltest/controllers/favorites_controller.dart';
+import 'package:jjmalltest/controllers/home_controller.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/navbar_provider.dart';
+import '../controllers/navbar_controller.dart';
 
 class NavBarScreen extends StatelessWidget {
   const NavBarScreen({super.key});
@@ -15,14 +15,14 @@ class NavBarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => NavBarProvider()),
-          ChangeNotifierProvider(create: (_) => HomeProvider()),
-          ChangeNotifierProvider(create: (_) => CategoryProvider()),
-          ChangeNotifierProvider(create: (_) => CartProvider()),
-          ChangeNotifierProvider(create: (_) => FavoritesProvider())
+          ChangeNotifierProvider(create: (_) => NavBarController()),
+          ChangeNotifierProvider(create: (_) => HomeController()),
+          ChangeNotifierProvider(create: (_) => CategoryController()),
+          ChangeNotifierProvider(create: (_) => CartController()),
+          ChangeNotifierProvider(create: (_) => FavoritesController())
         ],
         builder: (context, child) {
-          return Consumer<NavBarProvider>(
+          return Consumer<NavBarController>(
               builder: (context, navBarProvider, child) {
             return Scaffold(
               body: AnimatedContainer(

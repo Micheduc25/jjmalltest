@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jjmalltest/models/category.dart';
 
-class CategoryProvider with ChangeNotifier {
+class CategoryController with ChangeNotifier {
   List<Category> categoriesList = [
     Category(name: "Fruits", id: 1, image: "fruits.png"),
     Category(name: "Vegetables", id: 2, image: "fruit_basket.png"),

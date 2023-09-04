@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jjmalltest/controllers/auth_controller.dart';
 import 'package:jjmalltest/screens/auth/login.dart';
 import 'package:jjmalltest/screens/auth/signup.dart';
 import 'package:jjmalltest/screens/navbar_screen.dart';
@@ -6,9 +7,13 @@ import 'package:jjmalltest/screens/onboarding.dart';
 import 'package:jjmalltest/screens/order_success.dart';
 import 'package:jjmalltest/screens/product_details.dart';
 import 'package:jjmalltest/utils/theme.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider<AuthController>(
+    create: (_) => AuthController(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Fresh Fruits',
       theme: myTheme(),
       debugShowCheckedModeBanner: false,
+      initialRoute: OnboardingScreen.routeName,
       routes: {
         OnboardingScreen.routeName: (context) => const OnboardingScreen(),
         LoginScreen.routeName: (context) => const LoginScreen(),

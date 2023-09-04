@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jjmalltest/screens/navbar_screen.dart';
 
-class SignupProvider with ChangeNotifier {
+class SignupController with ChangeNotifier {
   bool isLoading = false;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();

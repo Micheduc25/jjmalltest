@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:jjmalltest/components/cart_card.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/cart_provider.dart';
+import '../controllers/cart_controller.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
+    final cartProvider = Provider.of<CartController>(context);
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PreferredSize(
@@ -41,7 +41,7 @@ class CartScreen extends StatelessWidget {
                   );
                 }
                 final item = cartProvider.cartItems[index - 1];
-                return Consumer<CartProvider>(
+                return Consumer<CartController>(
                   builder: (context, cartProvider, child) {
                     return CartCard(
                       item: item,
@@ -73,7 +73,7 @@ class CartScreen extends StatelessWidget {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Consumer<CartProvider>(
+                  Consumer<CartController>(
                     builder: (context, cartProvider, child) {
                       return Text(
                         "Total \$${cartProvider.calculateTotal().toStringAsFixed(2)}",
@@ -99,7 +99,7 @@ class CartScreen extends StatelessWidget {
                         onPressed: () {
                           cartProvider.placeOrder(context);
                         },
-                        child: Provider.of<CartProvider>(context).isLoading
+                        child: Provider.of<CartController>(context).isLoading
                             ? Center(
                                 child: CircularProgressIndicator(
                                   color:

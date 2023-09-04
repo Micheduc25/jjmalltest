@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeProvider with ChangeNotifier {
+class HomeController with ChangeNotifier {
   List<String> categoryImages = [
     "fruits_purple.png",
     "mushroom_purple.png",

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:jjmalltest/components/favorite_card.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/favorites_provider.dart';
+import '../controllers/favorites_controller.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final favoritesProvider = Provider.of<FavoritesProvider>(context);
+    final favoritesProvider = Provider.of<FavoritesController>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: PreferredSize(

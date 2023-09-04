@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jjmalltest/providers/navbar_provider.dart';
-import 'package:provider/provider.dart';
 
 class OrderSuccessScreen extends StatelessWidget {
   const OrderSuccessScreen({

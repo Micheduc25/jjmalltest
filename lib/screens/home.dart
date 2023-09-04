@@ -2,18 +2,21 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:jjmalltest/components/categories_card.dart';
 import 'package:jjmalltest/components/product_card.dart';
-import 'package:jjmalltest/providers/home_provider.dart';
-import 'package:jjmalltest/providers/navbar_provider.dart';
+import 'package:jjmalltest/controllers/home_controller.dart';
+import 'package:jjmalltest/controllers/navbar_controller.dart';
 import 'package:jjmalltest/screens/product_details.dart';
 import 'package:provider/provider.dart';
+
+import '../controllers/auth_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
-    final navbarProvider = Provider.of<NavBarProvider>(context);
+    final homeProvider = Provider.of<HomeController>(context);
+    final navbarProvider = Provider.of<NavBarController>(context);
+    final authController = Provider.of<AuthController>(context);
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
@@ -36,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Rafatul Islam",
+                        "${authController.currentUser!.nickName}",
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       ImageIcon(AssetImage("assets/images/ic_notif.png"))

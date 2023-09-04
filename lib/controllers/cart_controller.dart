@@ -3,7 +3,7 @@ import 'package:jjmalltest/screens/order_success.dart';
 
 import '../models/cart_item.dart';
 
-class CartProvider with ChangeNotifier {
+class CartController with ChangeNotifier {
   List<CartItem> cartItems = [
     CartItem(
         id: 1,

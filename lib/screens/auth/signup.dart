@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/signup_provider.dart';
+import '../../controllers/signup_controller.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -11,10 +11,10 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => SignupProvider(),
+      create: (_) => SignupController(),
       builder: (context, child) {
         final signupProvider =
-            Provider.of<SignupProvider>(context, listen: false);
+            Provider.of<SignupController>(context, listen: false);
 
         return GestureDetector(
           onTap: () {
@@ -64,7 +64,9 @@ class SignupScreen extends StatelessWidget {
                                                 .textTheme
                                                 .titleLarge),
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
                                             iconSize: 30,
                                             icon: Icon(
                                               Icons.cancel,
@@ -137,7 +139,7 @@ class SignupScreen extends StatelessWidget {
                                     const SizedBox(
                                       height: 25,
                                     ),
-                                    Consumer<SignupProvider>(
+                                    Consumer<SignupController>(
                                       builder:
                                           (context, signupProvider, child) {
                                         return TextFormField(

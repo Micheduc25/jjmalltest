@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/login_provider.dart';
+import '../../controllers/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -10,10 +10,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => LoginProvider(),
+      create: (_) => LoginController(),
       builder: (context, child) {
         final loginProvider =
-            Provider.of<LoginProvider>(context, listen: false);
+            Provider.of<LoginController>(context, listen: false);
 
         return GestureDetector(
           onTap: () {
@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                                   const SizedBox(
                                     height: 25,
                                   ),
-                                  Consumer<LoginProvider>(
+                                  Consumer<LoginController>(
                                     builder: (context, loginProvider, child) {
                                       return TextFormField(
                                         validator: (value) {
@@ -111,7 +111,23 @@ class LoginScreen extends StatelessWidget {
                                       onPressed: () {
                                         loginProvider.login(context);
                                       },
-                                      child: Text("SIGN IN"))
+                                      style: ElevatedButton.styleFrom(
+                                          elevation: 0),
+                                      child:
+                                          Provider.of<LoginController>(context)
+                                                  .isLoading
+                                              ? Center(
+                                                  child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .onPrimary,
+                                                  ),
+                                                ))
+                                              : Text("SIGN IN"))
                                 ],
                               ),
                             )),
