@@ -36,7 +36,7 @@ ThemeData myTheme() {
               textStyle: MaterialStateProperty.all(GoogleFonts.poppins(
                   color: Colors.black, fontWeight: FontWeight.bold)))),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.all(20),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: Color(0XFFCACACA)),
           borderRadius: BorderRadius.all(Radius.circular(32)),
@@ -45,7 +45,7 @@ ThemeData myTheme() {
             borderSide: BorderSide(color: Color(0XFFCACACA)),
             borderRadius: BorderRadius.all(Radius.circular(32))),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0XFFCACACA)),
+            borderSide: BorderSide(color: orange),
             borderRadius: BorderRadius.all(Radius.circular(32))),
       ),
       bottomSheetTheme:

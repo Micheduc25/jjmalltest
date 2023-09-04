@@ -50,7 +50,39 @@ class NavBarScreen extends StatelessWidget {
                       label: "Categories",
                     ),
                     BottomNavigationBarItem(
-                      icon: ImageIcon(AssetImage("assets/images/shopping.png")),
+                      icon: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          ImageIcon(AssetImage("assets/images/shopping.png")),
+                          Positioned(
+                              right: -5,
+                              top: -5,
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                    color: navBarProvider.currentIndex == 2
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .secondary
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .tertiary,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 1,
+                                    )),
+                                child: Text(
+                                  "3",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ))
+                        ],
+                      ),
                       label: "Details",
                     ),
                     BottomNavigationBarItem(
