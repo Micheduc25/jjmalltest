@@ -100,10 +100,13 @@ class CartScreen extends StatelessWidget {
                           cartProvider.placeOrder(context);
                         },
                         child: Provider.of<CartController>(context).isLoading
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface,
+                            ? Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
+                                  ),
                                 ),
                               )
                             : Text("Place Order".toUpperCase())),

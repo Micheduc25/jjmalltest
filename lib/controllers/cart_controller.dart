@@ -54,9 +54,11 @@ class CartController with ChangeNotifier {
   }
 
   Future<void> placeOrder(BuildContext context) async {
+    if (isLoading) return;
+
     isLoading = true;
     notifyListeners();
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1, milliseconds: 500));
     isLoading = false;
     notifyListeners();
 

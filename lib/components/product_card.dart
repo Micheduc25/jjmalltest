@@ -21,58 +21,75 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Card(
-        elevation: 0,
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Card(
+          elevation: 0,
+          clipBehavior: Clip.antiAlias,
+          child: Stack(
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/images/" + image,
-                      height: 160,
+                      height: constraints.maxHeight * 0.65,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("\$" + price.toString(),
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                      InkWell(
-                          onTap: () {},
-                          child: Text(
-                            "Add to cart",
+                  SizedBox(
+                    height: constraints.maxHeight * 0.3,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            title,
                             style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold),
-                          ))
-                    ],
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("\$" + price.toString(),
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                              InkWell(
+                                  onTap: () {},
+                                  child: Text(
+                                    "Add to cart",
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold),
+                                  ))
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   )
                 ],
               ),
-            ),
-            Positioned(
-                top: 5,
-                left: 5,
-                child: Icon(
-                  Icons.favorite,
-                  color: isFavorite
-                      ? Color(0XFFFF2E6C)
-                      : Theme.of(context).colorScheme.tertiary,
-                ))
-          ],
-        ),
-      ),
+              Positioned(
+                  top: 5,
+                  left: 5,
+                  child: Icon(
+                    Icons.favorite,
+                    color: isFavorite
+                        ? Color(0XFFFF2E6C)
+                        : Theme.of(context).colorScheme.tertiary,
+                  ))
+            ],
+          ),
+        );
+      }),
     );
   }
 }

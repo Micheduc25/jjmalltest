@@ -106,7 +106,11 @@ class HomeScreen extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: GridView.count(
-                  crossAxisCount: 2,
+                  crossAxisCount: MediaQuery.sizeOf(context).width < 350
+                      ? 1
+                      : MediaQuery.sizeOf(context).width < 700
+                          ? 2
+                          : (MediaQuery.sizeOf(context).width / 300).round(),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   childAspectRatio: 3 / 4,
